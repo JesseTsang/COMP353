@@ -18,16 +18,17 @@ class InventorySearchView
 	</head>
 	
 	<body>
-		<form action=”#” method=”POST” name="historicalSearchForm" class="pure-form" id="inventorySearchForm">
-    		<fieldset>
-        		<legend>Enter a product ID for a detailed product summary:</legend>
+		<div id="form" style="width:800px; margin:0 auto; padding-top: 100px;">
+			<form action=”#” method=”POST” name="historicalSearchForm" class="pure-form" id="inventorySearchForm">
+    			<fieldset>
+        			<legend>Enter a product ID for a detailed product summary:</legend>
 
-        		<input id=”productID” name=”productIDField” type="text" placeholder="Enter Product ID"></br>
+        			<input id=”productID” name=”productIDField” type="text" placeholder="Enter Product ID"></br>
 
-				</br>
-        		<button type="submit" name=”submit” class="pure-button pure-button-primary">Submit</button>
-
-    		</fieldset>
-		</form>
+					</br>
+        			<button type="submit" name=”submit” class="pure-button pure-button-primary">Submit</button>
+    			</fieldset>
+			</form>
+		</div>
 	</body>
 </html>

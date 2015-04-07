@@ -1,19 +1,23 @@
 <?php
+
+/*
+ *General idea: Some controller will call this storeRevenueSummaryView.php and pass the necessary array and multidimensional array.
+ *Then, this php file will use the arrays data and generate the tables. 
+ *
+ *Data needed:
+ *$summaryArray [todayDate, sumFromSale, sumFromRepair]
+ *$detailSummaryArray [][time, acticityType, revenue, employeeName]
+ *
+ */
+
 class StoreRevenueSummaryView
 {
-	//General idea: Some controller will call this storeRevenueSummaryView.php and pass the necessary array and multidimensional array.
-	//Data needed:
-	//$summaryArray [todayDate, sumFromSale, sumFromRepair]
-	//$detailSummaryArray [][time, acticityType, revenue, employeeName]
-	//Then, this php file will use the arrays and generate the tables. 
-	
 	//Test variables
 	private $summaryArray = [];
 	private $detailSummaryArray;
 	private $detailSummaryArraySize;
 	private $detailSummaryArrayCol = 4;
 
-	
 	//Test Constructor
 	public function __construct()
 	{	
@@ -56,7 +60,7 @@ class StoreRevenueSummaryView
 				)
 		);
 		
-		//Test Data
+		//Count the # of rows so we can generate a table.
 		$this->detailSummaryArraySize = count($this->detailSummaryArray);
 		
 		$this->drawRevenueSummaryTable();
@@ -67,6 +71,7 @@ class StoreRevenueSummaryView
 	
 	function drawRevenueSummaryTable()
 	{
+		echo '<div id="revenueSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">'; 
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -82,12 +87,16 @@ class StoreRevenueSummaryView
 		echo "<td>$" .$this->summaryArray['sumFromRepair']. "</td>";
 		echo "</tr>";
 		echo "</table>";
+		echo "</div>";
 	}
 	
 	//We need to know the row size
 	function drawDetailSummaryTable()
 	{
+		echo '<div id="revenueDetailsTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
 		echo "<table class=\"pure-table\">";
+		echo "<legend>Recent transactions:</legend>";
+		
 		echo "<thead>
 			  	<tr>
             		<th>Time</th>
@@ -113,13 +122,14 @@ class StoreRevenueSummaryView
 			
 			echo "<td>" .$entry['Time']. "</td>";
 			echo "<td>" .$entry['ActivityType']. "</td>";
-			echo "<td>" .$entry['Revenue']. "</td>";
+			echo "<td> $" .$entry['Revenue']. "</td>";
 			echo "<td>" .$entry['Employee']. "</td>";
 			
 			$counter++;
 		}
 				
 		echo "</table>";
+		echo "</div>";
 	}
 }
 ?>
@@ -128,7 +138,7 @@ class StoreRevenueSummaryView
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Revenue Summary View</title>
+		<title>Store Revenue Summary</title>
 		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 	</head>
 	

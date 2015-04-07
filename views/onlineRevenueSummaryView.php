@@ -1,4 +1,15 @@
 <?php
+
+/*
+ *General idea: Some controller will call this onlineRevenueSummaryView.php and pass the necessary array and multidimensional array.
+ *Then, this php file will use the arrays data and generate the tables.
+ *
+ *Data needed:
+ *$summaryArray [todayDate, sumFromOnline]
+ *$detailSummaryArray [][Time, Location, Revenue, ReferalEmployee, TransactionID] 
+ *
+ */
+
 class OnlineRevenueSummaryView
 {
 	//Test variables
@@ -12,7 +23,7 @@ class OnlineRevenueSummaryView
 	public function __construct()
 	{	
 		//Test Data
-		$this->summaryArray["todayDate"] = "06/04/2015";
+		$this->summaryArray["todayDate"] = "15/03/2015";
 		$this->summaryArray["sumFromOnline"] = "1000";
 
 		//Test Data
@@ -58,14 +69,15 @@ class OnlineRevenueSummaryView
 		//Test Data
 		$this->detailSummaryArraySize = count($this->detailSummaryArray);
 		
-		$this->drawRevenueSummaryTable();
+		$this->drawOnlineSummaryTable();
 		echo '</br>';
-		$this->drawDetailSummaryTable();
+		$this->drawOnlineDetailsTable();
 	}
 	
 	
-	function drawRevenueSummaryTable()
+	function drawOnlineSummaryTable()
 	{
+		echo '<div id="onlineSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -79,11 +91,13 @@ class OnlineRevenueSummaryView
 		echo "<td>$" .$this->summaryArray['sumFromOnline']. "</td>";
 		echo "</tr>";
 		echo "</table>";
+		echo "</div>";
 	}
 	
 	//We need to know the row size
-	function drawDetailSummaryTable()
+	function drawOnlineDetailsTable()
 	{
+		echo '<div id="onlineDetailsTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -119,6 +133,7 @@ class OnlineRevenueSummaryView
 		}
 				
 		echo "</table>";
+		echo "</div>";
 	}
 }
 ?>

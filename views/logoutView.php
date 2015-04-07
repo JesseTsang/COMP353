@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+/*
+ * Once a user click the "LOGOUT" link, and the finish the logout(), the function will return this page.
+ */
+
 class LogoutView
 {
 	//Test Constructor
@@ -17,7 +22,7 @@ class LogoutView
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<div class=logoutContainer>
+		<div id="logout" style="font-size: xx-large; width:800px; margin:0 auto; padding-top: 100px;">
   			<span>You have logout successfully!</span></br>
   			<span>Goodbye!</span>
 		</div>

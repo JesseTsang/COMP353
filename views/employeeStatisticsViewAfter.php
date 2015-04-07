@@ -1,4 +1,17 @@
 <?php
+
+/*
+ *General idea: Some controller will call this employeeStatisticsViewAfter.php and pass the necessary array and multidimensional array.
+ *Then, this php file will use the arrays data and generate the tables.
+ *
+ *Data needed:
+ *$summaryArray [employeeName, phoneNumber, dateOfEmployement, commisionPercentage]
+ *$detailSummaryArray [][Date, ActivityType, Revenue, Commision, TransactionID]
+ *
+ *Note:
+ *Remember to change the button link for modifyEmployeeDetailButton().
+ */
+
 class EmployeeStatisticsViewAfter
 {
 	//Test variables
@@ -60,15 +73,16 @@ class EmployeeStatisticsViewAfter
 		//Test Data
 		$this->detailSummaryArraySize = count($this->detailSummaryArray);
 		
-		$this->drawRevenueSummaryTable();
+		$this->drawEmployeeSummaryTable();
 		echo '</br>';
-		$this->drawDetailSummaryTable();
+		$this->drawEmployeeDetailTable();
 		$this->modifyEmployeeDetailButton();
 	}
 	
 	
-	function drawRevenueSummaryTable()
+	function drawEmployeeSummaryTable()
 	{
+		echo '<div id="employeeSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -86,11 +100,13 @@ class EmployeeStatisticsViewAfter
 		echo "<td>" .$this->summaryArray['commisionPercentage']. "%</td>";
 		echo "</tr>";
 		echo "</table>";
+		echo "</div>";
 	}
 	
 	//We need to know the row size
-	function drawDetailSummaryTable()
+	function drawEmployeeDetailTable()
 	{
+		echo '<div id="employeeDetailsTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
 		echo "<caption>Recent activities:</caption>";
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
@@ -113,8 +129,7 @@ class EmployeeStatisticsViewAfter
 			}
 			else
 			{
-				echo "<tr>";
-				
+				echo "<tr>";	
 			}
 			
 			echo "<td>" .$entry['Date']. "</td>";
@@ -127,6 +142,7 @@ class EmployeeStatisticsViewAfter
 		}
 				
 		echo "</table>";
+		echo "</div>";
 	}
 	
 	function modifyEmployeeDetailButton()

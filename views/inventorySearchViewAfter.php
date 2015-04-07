@@ -1,4 +1,17 @@
 <?php
+
+/*
+ *General idea: Some controller will call this inventorySearchViewAfter.php and pass the necessary array and multidimensional array.
+ *Then, this php file will use the arrays data and generate the tables.
+ *
+ *Data needed:
+ *$summaryArray [itemName, productID, productType, productQuantity, productPrice]
+ *$detailSummaryArray [][speed, ram, hddSize, screenSize, manufacturer]
+ *
+ *Note:
+ *Remember to change the button link for modifyEmployeeDetailButton().
+ */
+
 class InventorySearchViewAfter
 {
 	//Test variables
@@ -83,6 +96,7 @@ class InventorySearchViewAfter
 
 	function drawProductInventoryTable()
 	{
+		echo '<div id="productInventoryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -102,10 +116,12 @@ class InventorySearchViewAfter
 		echo "<td>$" .$this->summaryArray['productPrice']. "</td>";
 		echo "</tr>";
 		echo "</table>";
+		echo "</div>";
 	}
 	
 	function drawProductSpecTable()
 	{
+		echo '<div id="productSpecTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -125,10 +141,12 @@ class InventorySearchViewAfter
 		echo "<td>$" .$this->summaryArray['manufacturer']. "</td>";
 		echo "</tr>";
 		echo "</table>";
+		echo "</div>";
 	}
 	
 	function drawRecentTranactionsTable()
 	{
+		echo '<div id="recentTransactionTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -165,6 +183,7 @@ class InventorySearchViewAfter
 		}
 				
 		echo "</table>";
+		echo "</div>";
 	}
 }
 ?>

@@ -1,4 +1,15 @@
-<?php 
+<?php
+
+/*
+ * General Idea: $errorMsg stores the result from the getReferenceID() invocation.
+ * If the getReferenceID() is successful then getReferenceID() return the ID string (and return ManagerView or EmployeeView + this view)
+ * else return error message.
+ * 
+ * To do:
+ * uncomment $errorMsg
+ * comment out test variable
+ */
+
 class TransactionFailureView
 {
 	//Test Constructor
@@ -17,19 +28,15 @@ class TransactionFailureView
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<?php	
-		//$errorMsg stores the result from the getReferenceID() invocation.
-		//if the getReferenceID() is successful then getReferenceID() return the ID string (and return ManagerView or EmployeeView + this view)
-		//else return error message.
-			
+		<?php			
 		//echo $errorMsg;
 		
 		//Test variable
 		$errorMsg = "Error: Item requested out of stock!";
 		?>
 		
-		<div class=logoutContainer>
-  			<span>Tranaction Failed!</span></br>
+		<div id="errMsg" style="font-size: xx-large; width:800px; margin:0 auto; padding-top: 100px;">
+  			<span>Tranaction Failed!</span></br></br>
   			<span>Reference ID: <?php echo $errorMsg;?></span>
 		</div>
 	</body>

@@ -1,4 +1,15 @@
 <?php
+
+/*
+ *General idea: Some controller will call this repairRevenueSummaryView.php and pass the necessary array and multidimensional array.
+ *Then, this php file will use the arrays data and generate the tables.
+ *
+ *Data needed:
+ *$summaryArray [todayDate, sumFromRepair]
+ *$detailSummaryArray [][Time, ServiceType, Revenue, EmployeeName, ServiceID]
+ *
+ */
+
 class RepairRevenueSummaryView
 {
 	//Test variables
@@ -12,7 +23,7 @@ class RepairRevenueSummaryView
 	public function __construct()
 	{	
 		//Test Data
-		$this->summaryArray["todayDate"] = "06/04/2015";
+		$this->summaryArray["todayDate"] = "15/03/2015";
 		$this->summaryArray["sumFromRepair"] = "1000";
 
 		//Test Data
@@ -21,35 +32,35 @@ class RepairRevenueSummaryView
 						"Time" => "0900",
 						"ServiceType" => "PC Repair",
 						"Revenue" => "100",
-						"Employee" => "Joe",
+						"EmployeeName" => "Joe",
 						"ServiceID" => "RE-0900-107",
 				),
 				"row2" => array(
 						"Time" => "0930",
 						"ServiceType" => "PC Repair",
 						"Revenue" => "100",
-						"Employee" => "Tom",
+						"EmployeeName" => "Tom",
 						"ServiceID" => "RE-0930-108",
 				),
 				"row3" => array(
 						"Time" => "1000",
 						"ServiceType" => "PC Repair",
 						"Revenue" => "170",
-						"Employee" => "Mary",
+						"EmployeeName" => "Mary",
 						"ServiceID" => "RE-1000-109",
 				),
 				"row4" => array(
 						"Time" => "1300",
 						"ServiceType" => "Laptop Repair",
 						"Revenue" => "230",
-						"Employee" => "Mary",
+						"EmployeeName" => "Mary",
 						"ServiceID" => "RE-1300-001",
 				),
 				"row5" => array(
 						"Time" => "1300",
 						"ServiceType" => "Laptop Repair",
 						"Revenue" => "400",
-						"Employee" => "Kate",
+						"EmployeeName" => "Kate",
 						"ServiceID" => "RE-1300-100",
 				)
 				
@@ -58,14 +69,15 @@ class RepairRevenueSummaryView
 		//Test Data
 		$this->detailSummaryArraySize = count($this->detailSummaryArray);
 		
-		$this->drawRevenueSummaryTable();
+		$this->drawRepairSummaryTable();
 		echo '</br>';
-		$this->drawDetailSummaryTable();
+		$this->drawRepairDetailsTable();
 	}
 	
 	
-	function drawRevenueSummaryTable()
+	function drawRepairSummaryTable()
 	{
+		echo '<div id="repairSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -79,11 +91,13 @@ class RepairRevenueSummaryView
 		echo "<td>$" .$this->summaryArray['sumFromRepair']. "</td>";
 		echo "</tr>";
 		echo "</table>";
+		echo "</div>";
 	}
 	
 	//We need to know the row size
-	function drawDetailSummaryTable()
+	function drawRepairDetailsTable()
 	{
+		echo '<div id="repairDetailsTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -105,20 +119,20 @@ class RepairRevenueSummaryView
 			}
 			else
 			{
-				echo "<tr>";
-				
+				echo "<tr>";	
 			}
 			
 			echo "<td>" .$entry['Time']. "</td>";
 			echo "<td>" .$entry['ServiceType']. "</td>";
 			echo "<td> $" .$entry['Revenue']. "</td>";
-			echo "<td>" .$entry['Employee']. "</td>";
+			echo "<td>" .$entry['EmployeeName']. "</td>";
 			echo "<td>" .$entry['ServiceID']. "</td>";
 			
 			$counter++;
 		}
 				
 		echo "</table>";
+		echo "</div>";
 	}
 }
 ?>

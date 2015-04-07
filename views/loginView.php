@@ -1,4 +1,10 @@
 <?php 
+/*
+ *$result stores the result from the login() invocation
+ *if the login() is successful then login() return true (and return ManagerHomeView.php or EmployeeHomeView.php)
+ *else return false	(and return login.php)
+ */
+
 class LoginView
 {
 	//Test Constructor
@@ -18,25 +24,22 @@ class LoginView
 	</head>
 	
 	<body>
-		<?php	
-			//$result stores the result from the call login()
-			//if the login() is successful then login() return true (and return ManagerHomeView.php or EmployeeHomeView.php)
-			//else return false	(and return login.php)
-			
+		<?php		
 			//echo $result;
 		?>
+		<div id="form" style="width:800px; margin:0 auto; padding-top: 100px;">
+			<form action=”#” method=”POST” name="loginForm" class="pure-form" id="loginForm">
+    			<fieldset>
+        			<legend>Enter login information:</legend>
 
-		<form action=”#” method=”POST” name="loginForm" class="pure-form" id="loginForm">
-    		<fieldset>
-        		<legend>Enter login information:</legend>
+        			<input id=”username” name=”username” placeholder="Username" required=”required”>
+        			<input id=”password” name=”password” type="password" placeholder="Password" required=”required”></br>
 
-        		<input id=”username” name=”username” placeholder="Username" required=”required”>
-        		<input id=”password” name=”password” type="password" placeholder="Password" required=”required”></br>
-
-				</br>
-        		<button type="submit" name=”submit” class="pure-button pure-button-primary">Login</button>
-        		<button type="”reset" name=”reset” class="pure-button pure-button-primary">Reset</button>
-    		</fieldset>
-		</form>
+					</br>
+        			<button type="submit" name=”submit” class="pure-button pure-button-primary">Login</button>
+        			<button type="”reset" name=”reset” class="pure-button pure-button-primary">Reset</button>
+    			</fieldset>
+			</form>
+		</div>
 	</body>
 </html>

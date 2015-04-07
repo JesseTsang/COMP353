@@ -1,4 +1,15 @@
 <?php
+
+/*
+ *General idea: Some controller will call this saleRevenueSummaryView.php and pass the necessary array and multidimensional array.
+ *Then, this php file will use the arrays data and generate the tables.
+ *
+ *Data needed:
+ *$summaryArray [todayDate, sumFromSale]
+ *$detailSummaryArray [][Time, ProductID, Revenue, EmployeeName, TransactionID]
+ *
+ */
+
 class SaleRevenueSummaryView
 {
 	//Test variables
@@ -12,7 +23,7 @@ class SaleRevenueSummaryView
 	public function __construct()
 	{	
 		//Test Data
-		$this->summaryArray["todayDate"] = "06/04/2015";
+		$this->summaryArray["todayDate"] = "15/03/2015";
 		$this->summaryArray["sumFromSale"] = "1000";
 
 		//Test Data
@@ -20,7 +31,7 @@ class SaleRevenueSummaryView
 				"row1" => array(
 						"Time" => "0900",
 						"ProductID" => "HP-PC-1325",
-						"Revenue" => "150",
+						"Revenue" => "100",
 						"Employee" => "Joe",
 						"TransactionID" => "ST-0900-107",
 				),
@@ -48,24 +59,25 @@ class SaleRevenueSummaryView
 				"row5" => array(
 						"Time" => "1300",
 						"ProductID" => "HP-PRI-9330",
-						"Revenue" => "150",
-						"Employee" => "Joe",
+						"Revenue" => "400",
+						"Employee" => "Kate",
 						"TransactionID" => "ST-1300-100",
 				)
 				
 		);
 		
-		//Test Data
+		//Count the # of rows so we can generate a table.
 		$this->detailSummaryArraySize = count($this->detailSummaryArray);
 		
-		$this->drawRevenueSummaryTable();
+		$this->drawSaleSummaryTable();
 		echo '</br>';
-		$this->drawDetailSummaryTable();
+		$this->drawSaleDetailsTable();
 	}
 	
 	
-	function drawRevenueSummaryTable()
+	function drawSaleSummaryTable()
 	{
+		echo '<div id="saleSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -79,11 +91,12 @@ class SaleRevenueSummaryView
 		echo "<td>$" .$this->summaryArray['sumFromSale']. "</td>";
 		echo "</tr>";
 		echo "</table>";
+		echo "</div>";
 	}
 	
-	//We need to know the row size
-	function drawDetailSummaryTable()
+	function drawSaleDetailsTable()
 	{
+		echo '<div id="saleDetailsTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
@@ -111,7 +124,7 @@ class SaleRevenueSummaryView
 			
 			echo "<td>" .$entry['Time']. "</td>";
 			echo "<td>" .$entry['ProductID']. "</td>";
-			echo "<td>" .$entry['Revenue']. "</td>";
+			echo "<td> $" .$entry['Revenue']. "</td>";
 			echo "<td>" .$entry['Employee']. "</td>";
 			echo "<td>" .$entry['TransactionID']. "</td>";
 			
@@ -119,6 +132,7 @@ class SaleRevenueSummaryView
 		}
 				
 		echo "</table>";
+		echo "</div>";
 	}
 }
 ?>

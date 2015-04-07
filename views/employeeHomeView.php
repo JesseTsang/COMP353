@@ -1,4 +1,11 @@
 <?php
+/*
+ * Once the login process is successful, the user (if not a manager) will be presented with this page.
+ *
+ * Note:
+ * Employee Details should show details of the current login employee.
+ */
+
 class EmployeeHomeView
 {
 	//Test Constructor
@@ -29,13 +36,14 @@ class EmployeeHomeView
                 			<li class="pure-menu-item"><a href="#" class="pure-menu-link">Monthly Summary</a></li>
             			</ul>
         		</li>
-        		<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-        			<a href="#" id="menuLink1" class="pure-menu-link">New Ticket</a>
-            			<ul class="pure-menu-children">
-                			<li class="pure-menu-item"><a href="#" class="pure-menu-link">New Sale</a></li>
-                			<li class="pure-menu-item"><a href="#" class="pure-menu-link">New Repair</a></li>
-            			</ul>
-        		</li>
+        		<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">New Ticket</a></li>
+<!--         		<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover"> -->
+<!--         			<a href="#" id="menuLink1" class="pure-menu-link">New Ticket</a> -->
+<!--             			<ul class="pure-menu-children"> -->
+<!--                 			<li class="pure-menu-item"><a href="#" class="pure-menu-link">New Sale</a></li> -->
+<!--                 			<li class="pure-menu-item"><a href="#" class="pure-menu-link">New Repair</a></li> -->
+<!--             			</ul> -->
+<!--         		</li> -->
         		<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Inventory</a></li>
         		<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Employee Details</a></li>
         		<li class="pure-menu-item pure-menu-selected"><a href="views/logoutView.php" class="pure-menu-link">Logout</a></li>
