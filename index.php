@@ -1,4 +1,9 @@
 <?php
+
+/*
+ * Toggle different calls or combination of calls (such as ManagerHomeView + storeRevenueSummaryView) for page simulation.
+ */
+
 // require_once 'views/logoutView.php';
 // $app = new logoutView();
 
@@ -11,10 +16,10 @@ echo '</br>';
 
 // require_once 'views/employeeHomeView.php';
 // $app = new employeeHomeView();
-//echo '</br>';
+// echo '</br>';
 
-// require_once 'views/storeRevenueSummaryView.php';
-// $app2 = new StoreRevenueSummaryView();
+require_once 'views/storeRevenueSummaryView.php';
+$app2 = new StoreRevenueSummaryView();
 
 // require_once 'views/saleRevenueSummaryView.php';
 // $app2 = new SaleRevenueSummaryView();
@@ -27,6 +32,9 @@ echo '</br>';
 
 // require_once 'views/HistoricalRevenueView.php';
 // $app2 = new HistoricalRevenueView();
+
+// require_once 'views/EmployeeStatisticsView.php';
+// $app2 = new EmployeeStatisticsView();
 
 // require_once 'views/EmployeeStatisticsViewAfter.php';
 // $app2 = new EmployeeStatisticsViewAfter();
@@ -46,8 +54,8 @@ echo '</br>';
 // require_once 'views/inventorySearchViewAfter.php';
 // $app2 = new InventorySearchViewAfter();
 
-require_once 'views/modifyEmployeeDetailsView.php';
-$app2 = new ModifyEmployeeDetailsView();
+// require_once 'views/modifyEmployeeDetailsView.php';
+// $app2 = new ModifyEmployeeDetailsView();
 ?>
 
 <!-- Hello! You're in the landing index.php! -->
