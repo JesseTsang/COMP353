@@ -5,7 +5,7 @@
  *Then, this php file will use the arrays data and generate the tables.
  *
  *Data needed:
- *$summaryArray [employeeName, phoneNumber, dateOfEmployement, commisionPercentage]
+ *$summaryArray [employeeName, title, phoneNumber, dateOfEmployement, commisionPercentage]
  *$detailSummaryArray [][Date, ActivityType, Revenue, Commision, TransactionID]
  *
  *Note:
@@ -25,6 +25,7 @@ class EmployeeStatisticsViewAfter
 	{	
 		//Test Data
 		$this->summaryArray["employeeName"] = "Jesse Tsang";
+		$this->summaryArray["title"] = "Manager";
 		$this->summaryArray["phoneNumber"] = "514-123-4567";
 		$this->summaryArray["dateOfEmployement"] = "01/07/2014";
 		$this->summaryArray["commisionPercentage"] = "5";
@@ -85,6 +86,7 @@ class EmployeeStatisticsViewAfter
 		echo "<thead>
 			  	<tr>
             		<th>Employee Name</th>
+					<th>Title</th>
             		<th>Phone Number</th>
 					<th>Date of Employement</th>
             		<th>Commision %</th>
@@ -93,6 +95,7 @@ class EmployeeStatisticsViewAfter
 		
 		echo "<tr class=\"pure-table-odd\">";
 		echo "<td>" .$this->summaryArray['employeeName']. "</td>";
+		echo "<td>" .$this->summaryArray['title']. "</td>";
 		echo "<td>$" .$this->summaryArray['phoneNumber']. "</td>";
 		echo "<td>" .$this->summaryArray['dateOfEmployement']. "</td>";
 		echo "<td>" .$this->summaryArray['commisionPercentage']. "%</td>";
