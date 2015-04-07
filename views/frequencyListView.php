@@ -1,11 +1,11 @@
 <?php
 
 /*
- *General idea: Some controller will call this inventorySearchViewAfter.php and pass the multidimensional array.
+ *General idea: Some controller will call this frequencyListView.php and pass the multidimensional array.
  *Then, this php file will use the arrays data and generate the tables.
  *
  *Data needed:
- *$detailSummaryArray [][itemName, productType, productID, inventoryQuantity, frequency, price]
+ *$frequencyArray [][itemName, productType, productID, inventoryQuantity, frequency, price]
  *
  *Note:
  *
