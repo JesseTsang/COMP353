@@ -28,8 +28,8 @@ echo '</br>';
 // require_once 'views/HistoricalRevenueView.php';
 // $app2 = new HistoricalRevenueView();
 
-// require_once 'views/EmployeeStatisticsViewAfter.php';
-// $app2 = new EmployeeStatisticsViewAfter();
+require_once 'views/EmployeeStatisticsViewAfter.php';
+$app2 = new EmployeeStatisticsViewAfter();
 
 // require_once 'views/NewTicketView.php';
 // $app2 = new NewTicketView();
@@ -41,7 +41,10 @@ echo '</br>';
 // $app2 = new TransactionFailureView();
 
 // require_once 'views/inventorySearchView.php';
-// $app2 = new inventorySearchView();
+// $app2 = new InventorySearchView();
+
+// require_once 'views/inventorySearchViewAfter.php';
+// $app2 = new InventorySearchViewAfter();
 ?>
 
 <!-- Hello! You're in the landing index.php! -->
