@@ -136,6 +136,7 @@ class InventorySearchViewAfter
             		<th>Activity Type</th>
             		<th>Revenue</th>
             		<th>Employee Name</th>
+					<th>Comission</th>
 					<th>Transaction ID</th>
         		</tr>
     		  </thead>";
