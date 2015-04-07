@@ -19,7 +19,6 @@ class EmployeeStatisticsViewAfter
 	private $detailSummaryArray;
 	private $detailSummaryArraySize;
 	private $detailSummaryArrayCol = 5;
-
 	
 	//Test Constructor
 	public function __construct()
@@ -66,8 +65,7 @@ class EmployeeStatisticsViewAfter
 						"Revenue" => "400",
 						"Commision" => "20",
 						"TransactionID" => "RE-0900-107",
-				)
-				
+				)		
 		);
 		
 		//Test Data
@@ -142,13 +140,14 @@ class EmployeeStatisticsViewAfter
 		}
 				
 		echo "</table>";
-		echo "</div>";
+		;
 	}
 	
 	function modifyEmployeeDetailButton()
 	{
 		echo '</br>';
-		echo '<a class="pure-button pure-button-primary" href="#">Modify Employee Details</a>';		
+		echo '<a class="pure-button pure-button-primary" href="#">Modify Employee Details</a>';
+		echo "</div>";
 	}
 }
 ?>
