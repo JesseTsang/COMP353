@@ -44,7 +44,13 @@ class EmployeeHomeView
 <!--                 			<li class="pure-menu-item"><a href="#" class="pure-menu-link">New Repair</a></li> -->
 <!--             			</ul> -->
 <!--         		</li> -->
-        		<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Inventory</a></li>
+        		<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+        			<a href="" id="menuLink2" class="pure-menu-link">Inventory</a>
+            			<ul class="pure-menu-children">
+                			<li class="pure-menu-item"><a href="newTicketView.php" class="pure-menu-link">Inventory Search</a></li>
+                			<li class="pure-menu-item"><a href="#" class="pure-menu-link">Frequency List</a></li>
+            			</ul>
+        		</li>
         		<li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Employee Details</a></li>
         		<li class="pure-menu-item pure-menu-selected"><a href="views/logoutView.php" class="pure-menu-link">Logout</a></li>
     		</ul>
