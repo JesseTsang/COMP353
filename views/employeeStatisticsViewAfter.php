@@ -35,21 +35,21 @@ class EmployeeStatisticsViewAfter
 				),
 				"row3" => array(
 						"Date" => "01/04/2015",
-						"ActivityType" => "Montreal, Canada",
+						"ActivityType" => "Repair",
 						"Revenue" => "170",
 						"Commision" => "8.5",
 						"TransactionID" => "RE-0900-107",
 				),
 				"row4" => array(
 						"Date" => "01/04/2015",
-						"ActivityType" => "Montreal, Canada",
+						"ActivityType" => "Sale",
 						"Revenue" => "230",
 						"Commision" => "11.5",
 						"TransactionID" => "ST-0900-107",
 				),
 				"row5" => array(
 						"Date" => "01/04/2015",
-						"ActivityType" => "Montreal, Canada",
+						"ActivityType" => "Repair",
 						"Revenue" => "400",
 						"Commision" => "20",
 						"TransactionID" => "RE-0900-107",
@@ -120,7 +120,7 @@ class EmployeeStatisticsViewAfter
 			echo "<td>" .$entry['Date']. "</td>";
 			echo "<td>" .$entry['ActivityType']. "</td>";
 			echo "<td> $" .$entry['Revenue']. "</td>";
-			echo "<td>" .$entry['Commision']. "</td>";
+			echo "<td> $" .$entry['Commision']. "</td>";
 			echo "<td>" .$entry['TransactionID']. "</td>";
 			
 			$counter++;
