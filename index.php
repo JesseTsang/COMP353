@@ -18,8 +18,8 @@ echo '</br>';
 // $app = new employeeHomeView();
 // echo '</br>';
 
-require_once 'views/storeRevenueSummaryView.php';
-$app2 = new StoreRevenueSummaryView();
+// require_once 'views/storeRevenueSummaryView.php';
+// $app2 = new StoreRevenueSummaryView();
 
 // require_once 'views/saleRevenueSummaryView.php';
 // $app2 = new SaleRevenueSummaryView();
@@ -48,8 +48,8 @@ $app2 = new StoreRevenueSummaryView();
 // require_once 'views/transactionFailureView.php';
 // $app2 = new TransactionFailureView();
 
-// require_once 'views/inventorySearchView.php';
-// $app2 = new InventorySearchView();
+require_once 'views/inventorySearchView.php';
+$app2 = new InventorySearchView();
 
 // require_once 'views/inventorySearchViewAfter.php';
 // $app2 = new InventorySearchViewAfter();
