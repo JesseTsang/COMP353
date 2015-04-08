@@ -39,8 +39,22 @@ class modifyEmployeeDetailsView
         			</div>
 
         			<div class="pure-control-group">
-            			<label for="password">New Password:</label>
-            			<input id="password" type="password" placeholder="New Password">
+            			<label for="annualPayment">Annual Payment:</label>
+            			<input id="annualPaymentField" type="text" placeholder="Annual Amount">
+        			</div>
+        			
+        			<div class="pure-control-group">
+            			<label for="commission">Commission:</label>
+            			<input id="commissionField" type="text" placeholder="Commission Percentage">
+        			</div>
+        			
+        			<div class="pure-control-group">
+            			<label for="paymentMethod">Payment Method:</label>
+            			<select id="paymentMethod">
+            				<option>Weekly</option>
+            				<option>Monthly</option>
+            				<option>Annually</option>
+        				</select>
         			</div>
 				
 					<div class="pure-controls">
