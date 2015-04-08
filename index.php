@@ -48,14 +48,17 @@ echo '</br>';
 // require_once 'views/transactionFailureView.php';
 // $app2 = new TransactionFailureView();
 
-require_once 'views/inventorySearchView.php';
-$app2 = new InventorySearchView();
+// require_once 'views/inventorySearchView.php';
+// $app2 = new InventorySearchView();
 
 // require_once 'views/inventorySearchViewAfter.php';
 // $app2 = new InventorySearchViewAfter();
 
-// require_once 'views/modifyEmployeeDetailsView.php';
-// $app2 = new ModifyEmployeeDetailsView();
+require_once 'views/modifyEmployeeDetailsView.php';
+$app2 = new ModifyEmployeeDetailsView();
+
+// require_once 'views/frequencyListView.php';
+// $app2 = new frequencyListView();
 ?>
 
 <!-- Hello! You're in the landing index.php! -->
