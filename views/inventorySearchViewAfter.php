@@ -147,6 +147,7 @@ class InventorySearchViewAfter
 	function drawRecentTranactionsTable()
 	{
 		echo '<div id="recentTransactionTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
+		echo "<legend>Most Recent Transactions:</legend>";
 		echo "<table class=\"pure-table\">";
 		echo "<thead>
 			  	<tr>
