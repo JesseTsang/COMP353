@@ -30,7 +30,7 @@ echo '</br>';
 // require_once 'views/onlineRevenueSummaryView.php';
 // $app2 = new OnlineRevenueSummaryView();
 
-// require_once 'views/HistoricalRevenueView.php';
+// require_once 'views/historicalRevenueView.php';
 // $app2 = new HistoricalRevenueView();
 
 // require_once 'views/EmployeeStatisticsView.php';
