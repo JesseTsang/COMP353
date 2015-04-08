@@ -21,12 +21,18 @@ class InventorySearchView
 		<div id="form" style="width:800px; margin:0 auto; padding-top: 100px;">
 			<form action=”#” method=”POST” name="historicalSearchForm" class="pure-form pure-form-aligned" id="inventorySearchForm">
     			<fieldset>
-        			<legend>Enter a product ID for a detailed product summary:</legend>
+        			<legend>Enter a product name or ID for a detailed product summary:</legend>
 					
 					<div class="pure-control-group">
-						<label for="itemID">Product ID:</label>
-        				<input id=”productID” name=”productIDField” type="text" placeholder="Enter Product ID"></br>
+						<label for="itemName">Product Name:</label>
+        				<input id="itemName" name="itemNameField" type="text" placeholder="Enter Product Name"></br>
         			</div>	
+					
+					</br>
+					<div class="pure-control-group">
+						<label for="itemID">Product ID:</label>
+        				<input id="productID" name="productIDField" type="text" placeholder="Enter Product ID"></br>
+        			</div>      			
         			
         			</br>
         			<div class="pure-control-group">
