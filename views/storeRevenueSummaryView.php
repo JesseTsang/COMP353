@@ -1,148 +1,122 @@
 <?php
+$tableHeadings = $cols; //$cols is an array of headers [Transaction_ID, Product_ID, Product_Type, Amount, Cost, IsASale?, Date, Total]
+$revenueList = $rev; //$rev is an array of data that corrospond to $cols array (7 elements).
 
-/*
- *General idea: Some controller will call this storeRevenueSummaryView.php and pass the necessary array and multidimensional array.
- *Then, this php file will use the arrays data and generate the tables. 
- *
- *Data needed:
- *$summaryArray [todayDate, sumFromSale, sumFromRepair]
- *$detailSummaryArray [][time, acticityType, revenue, employeeName]
- *
- */
-
-class StoreRevenueSummaryView
+function calcStoreRevenue($revenueList)
 {
-	//Test variables
-	private $summaryArray = [];
-	private $detailSummaryArray;
-	private $detailSummaryArraySize;
-	private $detailSummaryArrayCol = 4;
-
-	//Test Constructor
-	public function __construct()
-	{	
-		//Test Data
-		$this->summaryArray["todayDate"] = "06/04/2015";
-		$this->summaryArray["sumFromSale"] = "200";
-		$this->summaryArray["sumFromRepair"] = "560";
-		
-		//Test Data
-		$this->detailSummaryArray = array(
-				"row1" => array(
-						"Time" => "0900",
-						"ActivityType" => "Sale",
-						"Revenue" => "150",
-						"Employee" => "Joe"
-				),
-				"row2" => array(
-						"Time" => "0930",
-						"ActivityType" => "Repair",
-						"Revenue" => "100",
-						"Employee" => "Tom"
-				),
-				"row3" => array(
-						"Time" => "1000",
-						"ActivityType" => "Repair",
-						"Revenue" => "400",
-						"Employee" => "Mary"
-				),
-				"row4" => array(
-						"Time" => "1300",
-						"ActivityType" => "Sale",
-						"Revenue" => "50",
-						"Employee" => "Mary"
-				),
-				"row5" => array(
-						"Time" => "1300",
-						"ActivityType" => "Repair",
-						"Revenue" => "60",
-						"Employee" => "Kate"
-				)
-		);
-		
-		//Count the # of rows so we can generate a table.
-		$this->detailSummaryArraySize = count($this->detailSummaryArray);
-		
-		$this->drawRevenueSummaryTable();
-		echo '</br>';
-		$this->drawDetailSummaryTable();
-	}
-	
-	
-	function drawRevenueSummaryTable()
+	if(sizeof($revenueList) < 1)
 	{
-		echo '<div id="revenueSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">'; 
-		echo "<table class=\"pure-table\">";
-		echo "<thead>
-			  	<tr>
-            		<th>Date</th>
-            		<th>Revenue from Sale</th>
-            		<th>Revenue from Repair</th>
-        		</tr>
-    		  </thead>";
-		
-		echo "<tr class=\"pure-table-odd\">";
-		echo "<td>" .$this->summaryArray['todayDate']. "</td>";
-		echo "<td>$" .$this->summaryArray['sumFromSale']. "</td>";
-		echo "<td>$" .$this->summaryArray['sumFromRepair']. "</td>";
-		echo "</tr>";
-		echo "</table>";
-		echo "</div>";
+		echo 'Nothing found.';
 	}
-	
-	//We need to know the row size
-	function drawDetailSummaryTable()
+	else
 	{
-		echo '<div id="revenueDetailsTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
-		echo "<table class=\"pure-table\">";
-		echo "<legend>Recent transactions:</legend>";
+		$total = 0;
 		
-		echo "<thead>
-			  	<tr>
-            		<th>Time</th>
-            		<th>Activity Type</th>
-            		<th>Revenue</th>
-            		<th>Employee</th>
-        		</tr>
-    		  </thead>";
-		
-		$counter = 1;
-		
-		foreach ($this->detailSummaryArray as $entry)
+		foreach ($revenueList as $key => $p) 
 		{
-			if($counter % 2 != 0)
+			if(isset($p["IsSold"]) && $p["IsSold"] == 'No')
 			{
-				echo "<tr class=\"pure-table-odd\">";		
+				$total = $total - ($p["Cost"]*$p["Amount"]);		
 			}
+				
 			else
 			{
-				echo "<tr>";
-				
-			}
-			
-			echo "<td>" .$entry['Time']. "</td>";
-			echo "<td>" .$entry['ActivityType']. "</td>";
-			echo "<td> $" .$entry['Revenue']. "</td>";
-			echo "<td>" .$entry['Employee']. "</td>";
-			
-			$counter++;
+				$total = $total + ($p["Cost"]*$p["Amount"]);			
+			}			
 		}
-				
-		echo "</table>";
-		echo "</div>";
+	
+		return $total;
 	}
 }
+
+function drawTotalRevenueTable($revenueList)
+{
+	$total = calcStoreRevenue($revenueList);
+	
+	echo '<div id="saleSummaryTable" style="width:1200px; margin:0 auto; padding-top: 100px;">';
+	echo "<table class=\"pure-table\">";
+	echo "<thead>
+		  	<tr>
+            	<th>Total Revenue</th>
+        	</tr>
+    	  </thead>";
+	
+	echo "<tr class=\"pure-table-odd\">";
+	echo "<td> $total </td>";
+	echo "</tr>";
+	echo "</table>";
+	echo "</div>";	
+}
+
+
+
+function drawDetailRevenueTable($tableHeadings, $revenueList)
+{
+	echo '<div id="saleSummaryTable" style="width:1200px; margin:0 auto; padding-top: 50px;">';
+	echo "<table class=\"pure-table\">";
+	echo "<thead>";
+	echo "<tr>";
+	
+	foreach ($tableHeadings as $Heading)
+	{
+		echo "<th> $Heading </th>";	
+	}
+	
+	echo "</tr>";
+	echo "</thead>";
+	
+	$counter = 1; //Use to keep track of the row number
+	
+	foreach ($revenueList as $entry)
+	{
+		if($counter % 2 != 0)
+		{
+			echo "<tr class=\"pure-table-odd\">";
+		}
+		else
+		{
+			echo "<tr>";	
+		}
+		
+		foreach ($entry as $element)
+		{
+			echo "<td> $element </td>";	
+		}
+		
+		echo "</tr>";	 
+		
+		$counter++;	
+	}
+	
+	echo "</table>";
+	echo "</div>";	
+}
+
 ?>
+
 
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Store Revenue Summary</title>
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<link rel="stylesheet" href="https://clipper.encs.concordia.ca/~ogc353_4/css/pure-min.css">
 	</head>
 	
 	<body>
-
+	<?php
+    echo $head; //Navigation bar
+    
+    if(sizeof($revenueList) < 1)
+    {
+    	echo 'Nothing found.';
+    }
+    else
+    {
+    	drawTotalRevenueTable($revenueList);
+    	drawDetailRevenueTable($tableHeadings, $revenueList);	
+    }
+                  
+    ?>
 	</body>
 </html>

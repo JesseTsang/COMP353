@@ -143,7 +143,7 @@ class OnlineRevenueSummaryView
 	<head>
 		<meta charset="utf-8">
 		<title>Online Revenue Summary View</title>
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<link rel="stylesheet" href="https://clipper.encs.concordia.ca/~ogc353_4/css/pure-min.css">
 	</head>
 	
 	<body>

@@ -36,8 +36,8 @@ echo '</br>';
 // require_once 'views/EmployeeStatisticsView.php';
 // $app2 = new EmployeeStatisticsView();
 
-// require_once 'views/EmployeeStatisticsViewAfter.php';
-// $app2 = new EmployeeStatisticsViewAfter();
+require_once 'views/employeeStatisticsViewAfter.php';
+$app2 = new EmployeeStatisticsViewAfter();
 
 // require_once 'views/NewTicketView.php';
 // $app2 = new NewTicketView();
@@ -54,8 +54,8 @@ echo '</br>';
 // require_once 'views/inventorySearchViewAfter.php';
 // $app2 = new InventorySearchViewAfter();
 
-require_once 'views/modifyEmployeeDetailsView.php';
-$app2 = new ModifyEmployeeDetailsView();
+// require_once 'views/modifyEmployeeDetailsView.php';
+// $app2 = new ModifyEmployeeDetailsView();
 
 // require_once 'views/frequencyListView.php';
 // $app2 = new frequencyListView();

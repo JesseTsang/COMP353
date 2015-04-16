@@ -13,42 +13,37 @@ class InventorySearchView
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Inventory Search View</title>
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<title>Inventory Search</title>
+		<link rel="stylesheet" href="https://clipper.encs.concordia.ca/~ogc353_4/css/pure-min.css">
 	</head>
 	
 	<body>
+        <?php echo $head; ?>
 		<div id="form" style="width:800px; margin:0 auto; padding-top: 100px;">
-			<form action=”#” method=”POST” name="historicalSearchForm" class="pure-form pure-form-aligned" id="inventorySearchForm">
+			<form action="https://clipper.encs.concordia.ca/cgi-bin/cgiwrap/ogc353_4/index.php/Employee/InventorySearch/display" method="POST" name="historicalSearchForm" class="pure-form" id="inventorySearchForm"> 			
     			<fieldset>
-        			<legend>Enter a product name or ID for a detailed product summary:</legend>
+        			<legend>Enter a product name or ID for a detailed product summary: (leave empty for all)</legend>
 					
 					<div class="pure-control-group">
-						<label for="itemName">Product Name:</label>
-        				<input id="itemName" name="itemNameField" type="text" placeholder="Enter Product Name"></br>
+						<label for="productID">Product Name/ID:</label>
+        				<input id="productID" name="product" type="text" placeholder="Product Name or ID"></br>
         			</div>	
 					
-					</br>
-					<div class="pure-control-group">
-						<label for="itemID">Product ID:</label>
-        				<input id="productID" name="productIDField" type="text" placeholder="Enter Product ID"></br>
-        			</div>      			
-        			
         			</br>
         			<div class="pure-control-group">
-            			<label for="prodyctType">Product Type:</label>
-            			<select id="prodyctType">
-            				<option>Computer</option>
-            				<option>Parts</option>
-            				<option>Software</option>
+            			<label for="type">Product Type:</label>
+            			<select name="type">
+            				<option value="Computer">Computer</option>
+            				<option value="Part">Parts</option>
+            				<option value="Software">Software</option>
         				</select>
         			</div>
         			
-						</br>
+					</br>
 					<div class="pure-control-group">
         				<button type="submit" name=”submit” class="pure-button pure-button-primary">Submit</button>
         			</div>
-    			</fieldset>
+    			</fieldset>		
 			</form>
 		</div>
 	</body>

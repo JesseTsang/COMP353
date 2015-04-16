@@ -12,192 +12,76 @@
  *Remember to change the button link for modifyEmployeeDetailButton().
  */
 
-class InventorySearchViewAfter
+$tableHeadings = $cols; //$cols is an array of headers [ComputerID, Manufacturer, Model, Speed, RAM, HDD, ScreenSize]
+$productList = $prod; //$prod is an array of data that corrospond to $cols array (7 elements).
+
+
+function drawResultTable($tableHeadings, $productList)
 {
-	//Test variables
-	private $summaryArray = [];
-	private $detailSummaryArray;
-	private $detailSummaryArraySize;
-	private $detailSummaryArrayCol = 5;
+	echo '<div id="historicalSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
+	echo "<caption>Search Result:</caption>";
+	echo "<table class=\"pure-table\">";
+	echo "<thead>";
+	echo "<tr>";
 
-	
-	//Test Constructor
-	public function __construct()
-	{	
-		//Test Data
-		$this->summaryArray["itemName"] = "HP ProDesk 999";
-		$this->summaryArray["productID"] = "HP-PC-1325";
-		$this->summaryArray["productType"] = "Computer";
-		$this->summaryArray["productQuantity"] = "10";
-		$this->summaryArray["productPrice"] = "989.99";
-		
-		//Test Data
-		$this->summaryArray["speed"] = "2";
-		$this->summaryArray["ram"] = "8";
-		$this->summaryArray["hddSize"] = "500";
-		$this->summaryArray["screenSize"] = "19";
-		$this->summaryArray["manufacturer"] = "HP";
-
-		//Test Data
-		$this->detailSummaryArray = array(
-				"row1" => array(
-						"Date" => "01/04/2015",
-						"ActivityType" => "Sale",
-						"Revenue" => "100",
-						"EmployeeName" => "Joe",
-						"Commision" => "5",
-						"TransactionID" => "ST-0900-107",
-				),
-				"row2" => array(
-						"Date" => "31/03/2015",
-						"ActivityType" => "Sale",
-						"Revenue" => "100",
-						"EmployeeName" => "Joe",
-						"Commision" => "5",
-						"TransactionID" => "ST-0930-108",
-				),
-				"row3" => array(
-						"Date" => "31/03/2015",
-						"ActivityType" => "Repair",
-						"Revenue" => "170",
-						"EmployeeName" => "Joe",
-						"Commision" => "8.5",
-						"TransactionID" => "RE-1000-109",
-				),
-				"row4" => array(
-						"Date" => "30/03/2015",
-						"ActivityType" => "Sale",
-						"Revenue" => "230",
-						"EmployeeName" => "Joe",
-						"Commision" => "11.5",
-						"TransactionID" => "ST-1300-001",
-				),
-				"row5" => array(
-						"Date" => "15/03/2015",
-						"ActivityType" => "Repair",
-						"Revenue" => "400",
-						"EmployeeName" => "Joe",
-						"Commision" => "20",
-						"TransactionID" => "RE-1300-100",
-				),
-				
-				
-		);
-		
-		//Test Data
-		$this->detailSummaryArraySize = count($this->detailSummaryArray);
-		
-		$this->drawProductInventoryTable();
-		echo '</br>';
-		$this->drawProductSpecTable();
-		echo '</br>';
-		$this->drawRecentTranactionsTable();
+	foreach ($tableHeadings as $Heading)
+	{
+		echo "<th> $Heading </th>";
 	}
 
-	function drawProductInventoryTable()
+	echo "</tr>";
+	echo "</thead>";
+
+	$counter = 1; //Use to keep track of the row number
+
+	foreach ($productList as $entry)
 	{
-		echo '<div id="productInventoryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
-		echo "<table class=\"pure-table\">";
-		echo "<thead>
-			  	<tr>
-            		<th>Item Name</th>
-            		<th>Product ID</th>
-					<th>Type</th>
-            		<th>Inventory Quantity</th>
-					<th>Price</th>
-        		</tr>
-    		  </thead>";
-		
-		echo "<tr class=\"pure-table-odd\">";
-		echo "<td>" .$this->summaryArray['itemName']. "</td>";
-		echo "<td>" .$this->summaryArray['productID']. "</td>";
-		echo "<td>" .$this->summaryArray['productType']. "</td>";
-		echo "<td>" .$this->summaryArray['productQuantity']. "</td>";
-		echo "<td>$" .$this->summaryArray['productPrice']. "</td>";
-		echo "</tr>";
-		echo "</table>";
-		echo "</div>";
-	}
-	
-	function drawProductSpecTable()
-	{
-		echo '<div id="productSpecTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
-		echo "<table class=\"pure-table\">";
-		echo "<thead>
-			  	<tr>
-            		<th>Speed</th>
-            		<th>Ram</th>
-					<th>HDD Capacity</th>
-            		<th>Screen Size</th>
-            		<th>Manufacturer</th>
-        		</tr>
-    		  </thead>";
-	
-		echo "<tr class=\"pure-table-odd\">";
-		echo "<td>" .$this->summaryArray['speed']. " GHz</td>";
-		echo "<td>$" .$this->summaryArray['ram']. " GB</td>";
-		echo "<td>" .$this->summaryArray['hddSize']. " GB</td>";
-		echo "<td>$" .$this->summaryArray['screenSize']. " inch</td>";
-		echo "<td>$" .$this->summaryArray['manufacturer']. "</td>";
-		echo "</tr>";
-		echo "</table>";
-		echo "</div>";
-	}
-	
-	function drawRecentTranactionsTable()
-	{
-		echo '<div id="recentTransactionTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
-		echo "<legend>Most Recent Transactions:</legend>";
-		echo "<table class=\"pure-table\">";
-		echo "<thead>
-			  	<tr>
-            		<th>Date</th>
-            		<th>Activity Type</th>
-            		<th>Revenue</th>
-            		<th>Employee Name</th>
-					<th>Comission</th>
-					<th>Transaction ID</th>
-        		</tr>
-    		  </thead>";
-		
-		$counter = 1;
-		
-		foreach ($this->detailSummaryArray as $entry)
+		if($counter % 2 != 0)
 		{
-			if($counter % 2 != 0)
-			{
-				echo "<tr class=\"pure-table-odd\">";		
-			}
-			else
-			{
-				echo "<tr>";		
-			}
-			
-			echo "<td>" .$entry['Date']. "</td>";
-			echo "<td>" .$entry['ActivityType']. "</td>";
-			echo "<td>" .$entry['Revenue']. "</td>";
-			echo "<td>" .$entry['EmployeeName']. "</td>";
-			echo "<td>" .$entry['Commision']. "</td>";
-			echo "<td>" .$entry['TransactionID']. "</td>";
-			
-			$counter++;
+			echo "<tr class=\"pure-table-odd\">";
 		}
-				
-		echo "</table>";
-		echo "</div>";
+		else
+		{
+			echo "<tr>";
+		}
+
+		foreach ($entry as $element)
+		{
+			echo "<td> $element </td>";
+		}
+
+		echo "</tr>";
+
+		$counter++;
 	}
+
+	echo "</table>";
+	echo "</div>";
 }
+
 ?>
 
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Sale Revenue Summary View</title>
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<title>Inventory Search Result</title>
+		<link rel="stylesheet" href="https://clipper.encs.concordia.ca/~ogc353_4/css/pure-min.css">
 	</head>
 	
 	<body>
+    <?php 
+    echo $head;
+    
+    if(sizeof($prod) < 1)
+    {
+    	echo 'Nothing found.';
+    }
+    else
+    {
+    	drawResultTable($tableHeadings, $productList);
+    }
+    ?>
 
 	</body>
 </html>

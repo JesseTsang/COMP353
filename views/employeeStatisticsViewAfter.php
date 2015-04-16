@@ -15,70 +15,27 @@
 class EmployeeStatisticsViewAfter
 {
 	//Test variables
+        private $id;
 	private $summaryArray = [];
 	private $detailSummaryArray;
 	private $detailSummaryArraySize;
 	private $detailSummaryArrayCol = 5;
 	
 	//Test Constructor
-	public function __construct()
+	public function __construct($id, $s, $d)
 	{	
-		//Test Data
-		$this->summaryArray["employeeName"] = "Jesse Tsang";
-		$this->summaryArray["title"] = "Manager";
-		$this->summaryArray["phoneNumber"] = "514-123-4567";
-		$this->summaryArray["dateOfEmployement"] = "01/07/2014";
-		$this->summaryArray["commisionPercentage"] = "5";
+            $this->id = $id;
+            $this->summaryArray = $s;
+            $this->detailSummaryArray = $d;
 
-		//Test Data
-		$this->detailSummaryArray = array(
-				"row1" => array(
-						"Date" => "01/04/2015",
-						"ActivityType" => "Sale",
-						"Revenue" => "100",
-						"Commision" => "5",
-						"TransactionID" => "ST-0900-107",
-				),
-				"row2" => array(
-						"Date" => "01/04/2015",
-						"ActivityType" => "Sale",
-						"Revenue" => "100",
-						"Commision" => "5",
-						"TransactionID" => "ST-0900-107",
-				),
-				"row3" => array(
-						"Date" => "01/04/2015",
-						"ActivityType" => "Repair",
-						"Revenue" => "170",
-						"Commision" => "8.5",
-						"TransactionID" => "RE-0900-107",
-				),
-				"row4" => array(
-						"Date" => "01/04/2015",
-						"ActivityType" => "Sale",
-						"Revenue" => "230",
-						"Commision" => "11.5",
-						"TransactionID" => "ST-0900-107",
-				),
-				"row5" => array(
-						"Date" => "01/04/2015",
-						"ActivityType" => "Repair",
-						"Revenue" => "400",
-						"Commision" => "20",
-						"TransactionID" => "RE-0900-107",
-				)		
-		);
-		
-		//Test Data
-		$this->detailSummaryArraySize = count($this->detailSummaryArray);
+// 		$this->detailSummaryArraySize = count($this->detailSummaryArray);
+// 		echo "detailSummaryArraySize is " .$this->detailSummaryArraySize;
 		
 		$this->drawEmployeeSummaryTable();
-		echo '</br>';
 		$this->drawEmployeeDetailTable();
 		$this->modifyEmployeeDetailButton();
 	}
-	
-	
+		
 	function drawEmployeeSummaryTable()
 	{
 		echo '<div id="employeeSummaryTable" style="width:800px; margin:0 auto; padding-top: 100px;">';
@@ -96,15 +53,15 @@ class EmployeeStatisticsViewAfter
 		echo "<tr class=\"pure-table-odd\">";
 		echo "<td>" .$this->summaryArray['employeeName']. "</td>";
 		echo "<td>" .$this->summaryArray['title']. "</td>";
-		echo "<td>$" .$this->summaryArray['phoneNumber']. "</td>";
+		echo "<td>" .$this->summaryArray['phoneNumber']. "</td>";
 		echo "<td>" .$this->summaryArray['dateOfEmployement']. "</td>";
 		echo "<td>" .$this->summaryArray['commisionPercentage']. "%</td>";
 		echo "</tr>";
 		echo "</table>";
 		echo "</div>";
+		echo '</br>';
 	}
 	
-	//We need to know the row size
 	function drawEmployeeDetailTable()
 	{
 		echo '<div id="employeeDetailsTable" style="width:800px; margin:0 auto; padding-top: 50px;">';
@@ -120,7 +77,7 @@ class EmployeeStatisticsViewAfter
         		</tr>
     		  </thead>";
 		
-		$counter = 1;
+		$counter = 1; //Use to keep track of the row number
 		
 		foreach ($this->detailSummaryArray as $entry)
 		{
@@ -138,33 +95,35 @@ class EmployeeStatisticsViewAfter
 			echo "<td> $" .$entry['Revenue']. "</td>";
 			echo "<td> $" .$entry['Commision']. "</td>";
 			echo "<td>" .$entry['TransactionID']. "</td>";
-			
+	
 			$counter++;
 		}
 				
-		echo "</table>";
-		;
+		echo "</table></br></br>";
 	}
 	
 	function modifyEmployeeDetailButton()
 	{
-		echo '</br>';
-		echo '<a class="pure-button pure-button-primary" href="#">Modify Employee Details</a>';
+		echo '<a class="pure-button pure-button-primary" href="https://clipper.encs.concordia.ca/cgi-bin/cgiwrap/ogc353_4/index.php/Manager/EditEmployee/index/'.$this->id.'">Modify Employee Details</a>';
 		echo "</div>";
 	}
 }
 ?>
 
+
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Employee Statistics View - After</title>
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<title>Employee Statistics</title>
+		<link rel="stylesheet" href="https://clipper.encs.concordia.ca/~ogc353_4/css/pure-min.css">
 	</head>
 	
 	<body>
-
+            <?php
+                echo $head;
+                $v = new EmployeeStatisticsViewAfter($id, $summaryArray, $detailSummaryArray);
+            ?>
 	</body>
 </html>
 

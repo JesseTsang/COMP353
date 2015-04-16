@@ -19,7 +19,7 @@ class LogoutView
 	<head>
 		<meta charset="utf-8">
 		<title>Logout</title>
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="https://clipper.encs.concordia.ca/cgi-bin/cgiwrap/ogc353_4/css/style.css">
 	</head>
 	<body>
 		<div id="logout" style="font-size: xx-large; width:800px; margin:0 auto; padding-top: 100px;">
